@@ -1,0 +1,7 @@
+To find all empty files in Bash shell
+
+find ./ -type f -empty
+
+To find all empty directories
+
+find ./ -type d -empty
