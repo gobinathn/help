@@ -5,3 +5,104 @@ find ./ -type f -empty
 To find all empty directories
 
 find ./ -type d -empty
+
+I put together a list of some of the basic find and grep commands that I use often. The find command recursively searches a directory tree for the files that match the given options.
+
+To find a file in any directory, starting in your current directory 
+$ find . -name filename
+
+If you do not know the complete filename,use the wildcard \* at the start and end of the filename.
+$ find . -name \*partialfilename\* -print
+
+Find only files (not directories) from your current directory. For example, 
+$ find . -type -f -print
+And to find only directory files,type
+$ find . -type -d -print 
+
+To find all files containing a particular string
+$ find . -name "\*" -exec grep "string" {} \\; -print
+
+To find all files that are greater than "n" bytes and have not been accessed for more than "x" days, 
+$ find . -type f -size +nc -atime +x 
+For example, to find a file greater than 800 bytes and not accessed for more than 10 days, type
+$ find . -type f -size +800c -atime +10
+The c indicates that the file size is in bytes.
+
+Grep can be used in many different ways. It is fast and powerful and an invaluable tool.grep
+searches for a pattern within a file and prints it out to
+standard output. You can also redirect the output to a file.
+grep supports the following options (from the man pages):
+
+OPTIONS
+
+     The following options are supported for  both  /usr/bin/grep
+
+     and /usr/xpg4/bin/grep:
+
+
+
+     -b       Precedes each line by the block number on which  it
+
+              was  found.  This  can  be useful in locating block
+
+              numbers by context (first block is 0).
+
+     -c       Prints only a count of the lines that  contain  the
+
+              pattern.
+
+     -h       Prevents the name of the file containing the match-
+
+              ing  line  from  being appended to that line.  Used
+
+              when searching multiple files.
+
+     -i       Ignores upper/lower case  distinction  during  com-
+
+              parisons.
+
+     -l       Prints only the names of files with matching lines,
+
+              separated  by  NEWLINE characters.  Does not repeat
+
+              the names of files when the pattern is  found  more
+
+              than once.
+
+     -n       Precedes each line by its line number in  the  file
+
+              (first line is 1).
+
+     -s       Suppresses  error  messages  about  nonexistent  or
+              unreadable files.
+     -v       Prints all lines except those that contain the pattern.
+
+     -w       Searches for the expression as a word as if  surrounded by \\< and \\>.
+
+
+
+The simplest form of grep is to search for a pattern in a file.
+$ grep pattern filename
+
+
+$ grep -i -n  pattern filename
+will match all lines within a file along with the line number that contains pattern(case ignored).
+
+grep has an exit status of 0 for success and 1 for failure.Type
+
+$ echo $?
+
+immediately after grep to retrieve the exit status (bash) or 
+
+$ echo $status
+in csh
+
+The output of other commands can be piped to grep.
+$ ps -ef |grep root > grep_output
+will redirect the output to the file grep_output(list of all processes on the system that contain root) 
+$ ls -l |grep '\^d' >> grep_output 
+will append the output to the file grep_output(list of all directories(all lines beginning with letter d))
+$ grep '\^pattern$' filename
+will print all lines matching only pattern
+$ grep '\^pattern'
+will print all lines that contain pattern.
