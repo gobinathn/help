@@ -1,0 +1,2 @@
+keytool -importcert -trustcacerts -file c:\gnarayanasamy\installs\certs\jfrog.cer -keystore cacerts -alias "jfrog"
+password: changeit
