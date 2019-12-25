@@ -1,0 +1,16 @@
+[abcd@abcd ~]$ openssl x509 -noout -subject -issuer -startdate -enddate -fingerprint -in ad.pem -text
+subject= /2.5.4.15=Private Organization/1.3.6.1.4.1.311.60.2.1.3=US/1.3.6.1.4.1.311.60.2.1.2=Delaware/serialNumber=3014267/C=US/ST=California/L=San Jose/O=PayPal, Inc./OU=PayPal Production/CN=admin.paypal.com
+issuer= /C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert SHA2 Extended Validation Server CA
+notBefore=Dec 17 00:00:00 2019 GMT
+notAfter=Feb 25 12:00:00 2022 GMT
+SHA1 Fingerprint=4C:33:56:54:37:99:1B:F9:CA:47:31:1C:F7:4F:BB:19:F2:D1:1A:1D
+  X509v3 Subject Alternative Name:
+                DNS:admin.abcd.com, DNS:abcd.abcd.com, DNS:abcd.abcd.com
+
+
+[abcd@abcd ~]$ openssl s_client -connect abcd.abcd.com:443 2>/dev/null | openssl x509 -noout -subject -issuer -startdate -enddate -fingerprint
+subject= /2.5.4.15=Private Organization/1.3.6.1.4.1.311.60.2.1.3=US/1.3.6.1.4.1.311.60.2.1.2=Delaware/serialNumber=3014267/C=US/ST=California/L=San Jose/O=PayPal, Inc./OU=PayPal Production/CN=admin.paypal.com
+issuer= /C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert SHA2 Extended Validation Server CA
+notBefore=Jan 18 00:00:00 2018 GMT
+notAfter=Jan 22 12:00:00 2020 GMT
+SHA1 Fingerprint=E7:2C:CC:21:2C:97:10:43:F9:EF:DF:AC:44:B4:83:D8:33:A7:A0:E2
