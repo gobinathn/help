@@ -1,0 +1,11 @@
+sudo /usr/sbin/tcpdump -vv -nn -i eth0 host te-alm-19464792002422439811306.qa.paypal.com  port 10187 -w capture.pcap
+
+te-alm-19464792002422439811306.qa.paypal.com
+
+openssl s_client -connect te-alm-19464792002422439811306.qa.paypal.com:10187 -tls1 -prexit -showcerts -state
+
+
+
+openssl s_client -connect 10.176.72.154:26898 -tls1 -prexit -showcerts -state
+
+te-alm-19464792002422439811306.qa.paypal.com
