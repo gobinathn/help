@@ -1,4 +1,4 @@
-To find all empty files in Bash shell
+To find all empty files in Bash shell.
 
 find ./ -type f -empty
 
