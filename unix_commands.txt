@@ -106,3 +106,5 @@ $ grep '\^pattern$' filename
 will print all lines matching only pattern
 $ grep '\^pattern'
 will print all lines that contain pattern.
+
+end of the file
